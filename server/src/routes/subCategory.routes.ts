@@ -5,12 +5,13 @@ import {
   updateSubcategory,
   deleteSubcategory,
 } from "../contoller/subCategory.controller";
+import authMiddleware from "../middleware/authmiddleware";
 
 const router = Router();
 
-router.post("/", createSubcategory);
-router.get("/", getSubcategories);
-router.put("/:id", updateSubcategory);
-router.delete("/:id", deleteSubcategory);
+router.post("/",authMiddleware, createSubcategory);
+router.get("/",authMiddleware, getSubcategories);
+router.put("/:id", authMiddleware, updateSubcategory);
+router.delete("/:id", authMiddleware, deleteSubcategory);
 
 export default router;
